@@ -33,7 +33,8 @@ module.exports = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue'
-    }
+    },
+    extensions: ['*', '.js', '.vue', '.json']
   },
   resolveLoader: {
     moduleExtensions: ['-loader']
