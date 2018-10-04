@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-    <app-header>Quotes Added</app-header>
     <app-progress-bar :quotesLength="quotes.length" :maxQuotes="maxQuotes">
     </app-progress-bar>
     <hr>
@@ -12,12 +11,11 @@
 </template>
 
 <script>
-import Header from "./components/Header.vue";
 import ProgressBar from "./components/ProgressBar.vue";
 import QuoteInputs from "./components/QuoteInputs.vue";
 import QuotesContainer from "./components/QuotesContainer.vue";
 import Footer from "./components/Footer.vue";
-import { eventBus } from "./main.js";
+import { eventBus } from "./main";
 
 export default {
   data: () => {
@@ -27,13 +25,12 @@ export default {
     };
   },
   components: {
-    appHeader: Header,
     appProgressBar: ProgressBar,
     appQuoteInputs: QuoteInputs,
     appQuotesContainer: QuotesContainer,
     appFooter: Footer
   },
-  created() {
+  created: () => {
     eventBus.$on("quoteWasAdded", quote => {
       if (this.quotes.length >= this.maxQuotes)
         return alert("Delete a quote before adding more!");
