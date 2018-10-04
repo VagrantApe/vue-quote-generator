@@ -1,9 +1,10 @@
 <template>
     <div class="container">
     <app-header>Quotes Added</app-header>
-    <app-progress-bar :quotes-length="quotes.length">{{quotes.length + '/10'}}</app-progress-bar>
+    <app-progress-bar :quotesLength="quotes.length" :maxQuotes="maxQuotes">
+    </app-progress-bar>
     <hr>
-    <app-quote-inputs>Quote</app-quote-inputs>
+    <app-quote-inputs ></app-quote-inputs>
     <hr>
     <app-quotes-container v-if="quotes.length > 0" :quotes="quotes"></app-quotes-container>
     <app-footer>Info: Click on a quote to delete it</app-footer>
@@ -21,7 +22,8 @@ import { eventBus } from "./main.js";
 export default {
   data: () => {
     return {
-      quotes: []
+      quotes: [],
+      maxQuotes: 10
     };
   },
   components: {
@@ -33,13 +35,13 @@ export default {
   },
   created() {
     eventBus.$on("quoteWasAdded", quote => {
-      if (this.quotes.length >= 10 || quote == "") return;
+      if (this.quotes.length >= this.maxQuotes)
+        return alert("Delete a quote before adding more!");
+      if (quote == "") return;
       this.quotes.push(quote);
-      console.log(this.quotes);
     });
     eventBus.$on("quoteWasRemoved", index => {
-      this.quotes = this.quotes.filter(q => q != quote);
-      console.log("delete clicked");
+      this.quotes.splice(index, 1);
     });
   }
 };

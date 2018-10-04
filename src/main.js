@@ -2,13 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 
 export const eventBus = new Vue({
-  name: 'eventBus',
   methods: {
     addQuote(quote) {
       this.$emit('quoteWasAdded', quote);
     },
     removeQuote(quote) {
-      this.$emit('quoteWasRemoved', quote);
+      this.$emit('quoteWasRemoved', index);
     }
   }
 });

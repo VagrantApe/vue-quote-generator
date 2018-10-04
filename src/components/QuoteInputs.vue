@@ -1,12 +1,14 @@
 <template>
-    <div class="inputs">
-      <slot class="input-header" :style="{textAlign: 'left'}"></slot>
-      <div class="text-area" :style="{textAlign: 'center'}">
-        <textarea v-model="quote" @change="updateQuote" ></textarea>
-      </div>
-      <div class="quote-submit" :style="{textAlign: 'center'}">
-        <button @click="addQuote">Add Quote</button>
-      </div>
+    <div class="row">
+      <form>
+        <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-md-6 col-md-offset-3 form-group">
+          <label>Quote</label>
+          <textarea class="form-control" rows="3" v-model="quote" placeholder="add quote here" />
+        </div>
+        <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-md-6 col-md-offset-3 form-group text-center">
+          <button class="btn btn-primary" @click.prevent="addQuote">Add Quote</button>
+        </div>
+      </form>
     </div>
 </template>
 
@@ -20,12 +22,9 @@ export default {
     };
   },
   methods: {
-    addQuote: quote => {
+    addQuote: () => {
       eventBus.addQuote(this.quote);
       this.quote = "";
-    },
-    updateQuote: evt => {
-      this.quote = evt.target.value;
     }
   }
 };

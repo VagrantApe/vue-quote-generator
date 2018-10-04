@@ -1,6 +1,10 @@
 <template>
-    <div class="footer">
-      <p><slot></slot></p>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <div class="alert alert-info">
+          <slot></slot>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -9,11 +13,4 @@ export default {};
 </script>
 
 <style>
-.footer {
-  background-color: cornflowerblue;
-  text-align: center;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 5px;
-}
 </style>

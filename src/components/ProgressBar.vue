@@ -1,7 +1,10 @@
 <template>
-    <div class="progress-bar">
-      <div class="progress-bar text-center" style="background-color: blue; margin: 0; color: white;" :style="{width: quotesLength/10*100 + '%'}">
-        <span><slot></slot></span>
+    <div class="row">
+      <div class="progress">
+        <div class="progress-bar text-center" role="progressbar" aria-valuenow="60" aria-valuemax="100"
+          :style="{width: (quotesLength / maxQuotes) * 100 + '%'}">
+          {{quotesLength}} / {{maxQuotes}}
+        </div>
       </div>
     </div>
 </template>
@@ -9,17 +12,11 @@
 <script>
 export default {
   props: {
-    quotesLength: Number
+    quotesLength: Number,
+    maxQuotes: Number
   }
 };
 </script>
 
 <style>
-.progress-bar {
-  width: 100%;
-  height: 20px;
-  background-color: #eee;
-  margin: auto;
-  transition: width 500ms;
-}
 </style>

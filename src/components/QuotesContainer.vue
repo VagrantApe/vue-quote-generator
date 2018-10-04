@@ -1,12 +1,25 @@
 <template>
-    <ul>
-      <li v-for="(quote, index) in quotes" :key="index">{{quote}}</li>
-    </ul>
+    <div class="row">
+      <app-quote v-for="(quote, index) in quotes" :key="index" @click.native="removeQuote(index)">
+        {{quote}}
+      </app-quote>
+    </div>
 </template>
 
 <script>
+import { eventBus } from "../main";
+import Quote from "./Quote.vue";
+
 export default {
-  props: ["quotes"]
+  props: ["quotes"],
+  components: {
+    appQuote: Quote
+  },
+  methods: {
+    removeQuote: index => {
+      eventBus.removeQuote(index);
+    }
+  }
 };
 </script>
 
@@ -17,12 +30,13 @@ ul {
 }
 
 li {
-  list-style-type: none;
   border: 2px solid black;
-  width: 20%;
+  min-width: 20%;
   box-shadow: 2px 2px;
   padding: 5px;
   margin: 10px;
   word-wrap: break-word;
+  display: inline-block;
+  font-size: 15px;
 }
 </style>
