@@ -1,6 +1,10 @@
 # vue-quote-generator
 
-> A Vue.js project
+Some differences in this app compared to the [course project](https://www.udemy.com/vuejs-2-the-complete-guide/) were :
+
+- Used eventBus in main.js
+- Fixed bugs in webpack setup
+- Broke out footer
 
 ## Build Setup
 
