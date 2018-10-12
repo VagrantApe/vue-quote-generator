@@ -22,7 +22,7 @@ export default {
     };
   },
   methods: {
-    addQuote: () => {
+    addQuote() {
       eventBus.addQuote(this.quote);
       this.quote = "";
     }

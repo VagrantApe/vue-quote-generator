@@ -30,7 +30,7 @@ export default {
     appQuotesContainer: QuotesContainer,
     appFooter: Footer
   },
-  created: () => {
+  created() {
     eventBus.$on("quoteWasAdded", quote => {
       if (this.quotes.length >= this.maxQuotes)
         return alert("Delete a quote before adding more!");
