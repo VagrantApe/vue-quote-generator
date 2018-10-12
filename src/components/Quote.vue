@@ -12,12 +12,7 @@
 import { eventBus } from "../main";
 
 export default {
-  props: ["quotes"],
-  methods: {
-    removeQuote: quote => {
-      eventBus.removeQuote(quote);
-    }
-  }
+  props: ["quotes"]
 };
 </script>
 
